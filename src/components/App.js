@@ -40,6 +40,13 @@ class App extends Component {
             <SearchBox
               getResults={debounceEventHandler(this.getResults, 1000)} />
           </div>
+        </div>
+        <div className="row rand-button">
+          <div className="col-4 text-center mx-auto">
+            <a target="_blank" href="https://en.wikipedia.org/wiki/Special:Random" className="btn btn-lg btn-dark">Random Article</a>
+          </div>
+        </div>
+        <div className="row">
           <div className="col-8 mx-auto">
             <Articles articles={this.state.articles} />
           </div>
