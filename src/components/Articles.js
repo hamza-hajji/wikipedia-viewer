@@ -5,7 +5,9 @@ export default ({
 }) => {
   return (
     <ul>
-      <li></li>
+      {articles.map((article) => {
+        return <li>{article.title}</li>;
+      })}
     </ul>
   );
 };
