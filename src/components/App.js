@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import SearchBox from './SearchBox';
 import Articles from './Articles';
+import {debounceEventHandler} from '../helpers.js';
 
 class App extends Component {
   constructor() {
@@ -15,7 +16,8 @@ class App extends Component {
   }
 
   getResults(e) {
-    const URL = `https://en.wikipedia.org/w/api.php?action=query&list=search&format=json&srsearch=${e.target.value}&origin=*`;
+    const val = e.target.value;
+    const URL = `https://en.wikipedia.org/w/api.php?action=query&list=search&format=json&srsearch=${val}&origin=*`;
     axios
       .get(URL)
       .then((res) => {
@@ -23,13 +25,14 @@ class App extends Component {
           return this.setState({articles: []});
         }
         this.setState({articles: res.data.query.search});
+        console.log(this.state.articles);
       });
   }
 
   render() {
     return (
       <div className="container">
-        <SearchBox getResults={this.getResults} />
+        <SearchBox getResults={debounceEventHandler(this.getResults, 1000)} />
         <Articles articles={this.state.articles} />
       </div>
     );

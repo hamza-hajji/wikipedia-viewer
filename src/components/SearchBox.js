@@ -4,6 +4,10 @@ export default ({
   getResults
 }) => {
   return (
-    <input type="text" placeholder="Search" onChange={getResults} />
+    <div>
+    <input
+      placeholder="Search"
+      onChange={getResults} />
+    </div>
   );
 };
