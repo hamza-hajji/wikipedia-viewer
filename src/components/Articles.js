@@ -5,8 +5,8 @@ export default ({
 }) => {
   return (
     <ul>
-      {articles.map((article) => {
-        return <li>{article.title}</li>;
+      {articles.map((article, idx) => {
+        return <li key={idx}>{article.title}</li>;
       })}
     </ul>
   );

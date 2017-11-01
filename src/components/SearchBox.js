@@ -1,10 +1,9 @@
 import React from 'react';
 
 export default ({
-  onChange,
-  search
+  getResults
 }) => {
   return (
-    <input type="text" placeholder="Search" value={search} onChange={onChange} />
+    <input type="text" placeholder="Search" onChange={getResults} />
   );
 };

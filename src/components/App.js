@@ -8,33 +8,28 @@ class App extends Component {
   constructor() {
     super();
 
+    this.getResults = this.getResults.bind(this);
     this.state = {
       articles: []
     };
   }
 
-  componentWillMount() {
-    this.getResults();
-  }
-
-  onChange() {
-
-  }
-
-  getResults() {
-    const URL = 'https://en.wikipedia.org/w/api.php?action=query&list=search&format=json&srsearch=physics&origin=*';
+  getResults(e) {
+    const URL = `https://en.wikipedia.org/w/api.php?action=query&list=search&format=json&srsearch=${e.target.value}&origin=*`;
     axios
       .get(URL)
       .then((res) => {
-        this.setState({articles: res.data.query.search})
-        console.log(res);
+        if (typeof res.data.error !== 'undefined') {
+          return this.setState({articles: []});
+        }
+        this.setState({articles: res.data.query.search});
       });
   }
 
   render() {
     return (
       <div className="container">
-        <SearchBox search="" onChange={this.onChange} />
+        <SearchBox getResults={this.getResults} />
         <Articles articles={this.state.articles} />
       </div>
     );
