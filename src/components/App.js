@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import '../App.css';
+
 import SearchBox from './SearchBox';
 import Articles from './Articles';
 import {debounceEventHandler} from '../helpers.js';
@@ -32,8 +34,16 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <SearchBox getResults={debounceEventHandler(this.getResults, 1000)} />
-        <Articles articles={this.state.articles} />
+        <div className="row">
+          <div className="col-6 mx-auto">
+            <h1 className="text-center">Wikipedia Viewer</h1><br /><br />
+            <SearchBox
+              getResults={debounceEventHandler(this.getResults, 1000)} />
+          </div>
+          <div className="col-8 mx-auto">
+            <Articles articles={this.state.articles} />
+          </div>
+        </div>
       </div>
     );
   }

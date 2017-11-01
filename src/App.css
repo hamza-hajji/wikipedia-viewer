@@ -1,0 +1,19 @@
+.container {
+  margin-top: 3rem;
+}
+
+.results {
+  margin-top: 2rem;
+}
+
+.search-input {
+  text-align: center;
+  border-radius: 3rem !important;
+}
+
+
+.search-input:focus {
+  outline: none !important;
+  box-shadow: none;
+  border-color: #ccc;
+}
