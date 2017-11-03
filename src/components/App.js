@@ -5,6 +5,7 @@ import '../App.css';
 
 import SearchBox from './SearchBox';
 import Articles from './Articles';
+import RandButton from './RandButton';
 import {debounceEventHandler} from '../helpers.js';
 
 class App extends Component {
@@ -12,8 +13,10 @@ class App extends Component {
     super();
 
     this.getResults = this.getResults.bind(this);
+    this.showInput = this.showInput.bind(this);
     this.state = {
-      articles: []
+      articles: [],
+      inputShown: false
     };
   }
 
@@ -31,19 +34,25 @@ class App extends Component {
       });
   }
 
+  showInput() {
+    this.setState({inputShown: !this.state.inputShown});
+  }
+
   render() {
     return (
       <div className="container">
         <div className="row">
           <div className="col-6 mx-auto">
-            <h1 className="text-center">Wikipedia Viewer</h1><br /><br />
+            <h1 className="text-center header">Wikipedia Viewer</h1><br /><br />
             <SearchBox
+              showInput={this.showInput}
+              inputShown={this.state.inputShown}
               getResults={debounceEventHandler(this.getResults, 1000)} />
           </div>
         </div>
         <div className="row rand-button">
           <div className="col-4 text-center mx-auto">
-            <a target="_blank" href="https://en.wikipedia.org/wiki/Special:Random" className="btn btn-lg btn-dark">Random Article</a>
+            <RandButton />
           </div>
         </div>
         <div className="row">
