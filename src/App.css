@@ -3,30 +3,19 @@ body {
   font-family: 'Lato', sans-serif;
 }
 
-.header {
+.container {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.main-header {
+  margin-bottom: 3rem;
+}
+
+.main-header h1 {
   color: #F26E64;
   font-size: 4rem;
   font-family: 'Marck Script', cursive;
-}
-
-.container {
-  margin-top: 3rem;
-}
-
-.results {
-  margin-top: 2rem;
-}
-
-.search-input {
-  text-align: center;
-  border-radius: 3rem !important;
-  background-color: transparent;
-  border-color: #F26E64;
-  color: #F26E64;
-}
-
-.searchIcon {
-  color: #F26E64;
 }
 
 .rand-button {
@@ -38,12 +27,31 @@ body {
   border-radius: 3rem !important;
   background: transparent;
   border: 2px #fff solid;
+  transition: all .5s ease-out;
 }
 
 .rand-button a:hover {
   background: #fff;
   color: #20054A;
-  border: none;
+  border: 2px #fff solid;
+  transition: all .5s ease-out;
+}
+
+.search-input {
+  text-align: center;
+  border-radius: 3rem !important;
+  background-color: transparent;
+  border-color: #F26E64;
+  color: #F26E64;
+}
+
+.searchIcon i {
+  color: #F26E64;
+  cursor: pointer;
+}
+
+.searchIcon i:hover {
+  color: #F23E64;
 }
 
 .search-input:focus, .rand-button:focus {
@@ -54,18 +62,50 @@ body {
   color: #F26E64;
 }
 
-::-webkit-input-placeholder {
-    color: #F26E64;
+.search-input::-webkit-input-placeholder { /* Chrome */
+  color: #F26E64;
 }
-:-moz-placeholder {
-    /* FF 4-18 */
-    color: #F26E64;
+.search-input:-ms-input-placeholder { /* IE 10+ */
+  color: #F26E64;
 }
-::-moz-placeholder {
-    /* FF 19+ */
-    color: #F26E64;
+.search-input::-moz-placeholder { /* Firefox 19+ */
+  color: #F26E64;
+  opacity: 1;
 }
-:-ms-input-placeholder {
-    /* IE 10+ */
-    color: #F26E64;
+.search-input:-moz-placeholder { /* Firefox 4 - 18 */
+  color: #F26E64;
+  opacity: 1;
+}
+
+.results {
+  margin-top: 2rem;
+  color: #F26E64;
+}
+
+.results, .results .list-group-item {
+  background-color: #20054A;
+}
+
+.list-group-item {
+  border-color: #fff !important;
+}
+
+.results .list-group-item-heading {
+  font-size: 1.5rem;
+  font-family: 'Manuale', serif;
+}
+
+.results .list-group-item-text {
+  color: #fff;
+}
+
+.results .list-group-item-heading a {
+  color: #F26E64;
+  transition: all .25s ease-out;
+}
+
+.results .list-group-item-heading a:hover {
+  color: #F23E64;
+  transition: all .25s ease-out;
+  text-decoration: none;
 }

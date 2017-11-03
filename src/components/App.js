@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import '../App.css';
 
+import Header from './Header';
 import SearchBox from './SearchBox';
 import Articles from './Articles';
 import RandButton from './RandButton';
@@ -14,9 +15,11 @@ class App extends Component {
 
     this.getResults = this.getResults.bind(this);
     this.showInput = this.showInput.bind(this);
+    this.showIcon = this.showIcon.bind(this);
     this.state = {
       articles: [],
-      inputShown: false
+      inputShown: false,
+      iconShown: true
     };
   }
 
@@ -35,30 +38,34 @@ class App extends Component {
   }
 
   showInput() {
-    this.setState({inputShown: !this.state.inputShown});
+    this.setState({inputShown: true});
+    this.setState({iconShown: false});
+  }
+
+  showIcon() {
+    this.setState({iconShown: true});
+    this.setState({inputShown: false});
   }
 
   render() {
     return (
       <div className="container">
         <div className="row">
-          <div className="col-6 mx-auto">
-            <h1 className="text-center header">Wikipedia Viewer</h1><br /><br />
-            <SearchBox
-              showInput={this.showInput}
-              inputShown={this.state.inputShown}
-              getResults={debounceEventHandler(this.getResults, 1000)} />
-          </div>
-        </div>
-        <div className="row rand-button">
-          <div className="col-4 text-center mx-auto">
-            <RandButton />
-          </div>
+          <Header />
         </div>
         <div className="row">
-          <div className="col-8 mx-auto">
-            <Articles articles={this.state.articles} />
-          </div>
+          <SearchBox
+            showIcon={this.showIcon}
+            showInput={this.showInput}
+            inputShown={this.state.inputShown}
+            iconShown={this.state.iconShown}
+            getResults={debounceEventHandler(this.getResults, 500)} />
+        </div>
+        <div className="row">
+            <RandButton />
+        </div>
+        <div className="row">
+          <Articles articles={this.state.articles} />
         </div>
       </div>
     );
