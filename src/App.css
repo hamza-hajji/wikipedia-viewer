@@ -45,13 +45,19 @@ body {
   color: #F26E64;
 }
 
+.searchIcon {
+  margin-bottom: 1.5rem;
+}
+
 .searchIcon i {
   color: #F26E64;
   cursor: pointer;
+  transition: all .3s ease;
 }
 
 .searchIcon i:hover {
-  color: #F23E64;
+  transform: scale(1.1);
+  transition: all .3s ease;
 }
 
 .search-input:focus, .rand-button:focus {
@@ -110,7 +116,7 @@ body {
   text-decoration: none;
 }
 
-
+/* ANIMATIONs */
 .article-enter {
   opacity: 0.2;
   transform: translateX(-100px);
@@ -119,5 +125,27 @@ body {
 .article-enter.article-enter-active {
   opacity: 1;
   transform: translateX(0);
+  transition: all .3s ease;
+}
+
+.input-enter {
+  opacity: 0.2;
+  transform: scaleX(.2);
+}
+
+.input-enter.input-enter-active {
+  opacity: 1;
+  transform: scaleX(1);
+  transition: all .3s ease;
+}
+
+.input-leave {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.input-leave.input-leave-active {
+  opacity: 0;
+  transform: scaleX(.1);
   transition: all .3s ease;
 }

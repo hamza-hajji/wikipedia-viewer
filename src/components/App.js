@@ -14,12 +14,10 @@ class App extends Component {
     super();
 
     this.getResults = this.getResults.bind(this);
-    this.showInput = this.showInput.bind(this);
-    this.showIcon = this.showIcon.bind(this);
+    this.toggleInput = this.toggleInput.bind(this);
     this.state = {
       articles: [],
-      inputShown: false,
-      iconShown: true
+      inputShown: false
     };
   }
 
@@ -37,14 +35,8 @@ class App extends Component {
       });
   }
 
-  showInput() {
-    this.setState({inputShown: true});
-    this.setState({iconShown: false});
-  }
-
-  showIcon() {
-    this.setState({iconShown: true});
-    this.setState({inputShown: false});
+  toggleInput() {
+    this.setState({inputShown: !this.state.inputShown});
   }
 
   render() {
@@ -55,10 +47,8 @@ class App extends Component {
         </div>
         <div className="row">
           <SearchBox
-            showIcon={this.showIcon}
-            showInput={this.showInput}
+            toggleInput={this.toggleInput}
             inputShown={this.state.inputShown}
-            iconShown={this.state.iconShown}
             getResults={debounceEventHandler(this.getResults, 500)} />
         </div>
         <div className="row">
